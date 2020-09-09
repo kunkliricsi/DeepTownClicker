@@ -51,6 +51,20 @@ namespace DeepTownClicker.Core
             RunCommand("adb.exe", "shell input touchscreen tap " + X + " " + Y);
         }
 
+        public void ClickMultiple(params (int x, int y)[] points)
+        {
+            var command = "";
+            foreach (var (x, y) in points)
+            {
+                command += (" && input touchscreen tap " + x + " " + y);
+            }
+
+            command = command.Substring(4);
+            command = "shell " + command;
+
+            RunCommand("adb.exe", command);
+        }
+
         public void Swipe(int X1, int Y1, int X2, int Y2, int duration = 100)
         {
             RunCommand("adb.exe", "shell input touchscreen swipe " + X1 + " " + Y1 + " " + X2 + " " + Y2 + " " + duration);

@@ -24,6 +24,7 @@ namespace DeepTownClicker
         public static Button Surface = new Button(1010, 860);
         public static Button GoDown = new Button(1010, 1160);
         public static Button GoUp = new Button(1010, 960);
+        public static Button Mine = new Button(1010, 1260);
 
         public static Button ClaimMine = new Button(960, 2222);
     }

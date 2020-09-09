@@ -1,6 +1,7 @@
 ﻿using DeepTownClicker.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DeepTownClicker
@@ -29,6 +30,11 @@ namespace DeepTownClicker
             ClickButton(Button.Surface);
         }
 
+        public void GoToSpells()
+        {
+            ClickButton(Button.Mine);
+        }
+
         public void GoDown()
         {
             ClickButton(Button.GoDown);
@@ -55,8 +61,8 @@ namespace DeepTownClicker
 
         public void ClickButton(params Button[] buttons)
         {
-            foreach (var button in buttons)
-                ClickButton(button);
+            var coordinates = buttons.Select(b => (b.X, b.Y)).ToArray();
+            _adb.ClickMultiple(coordinates);
         }
 
         public void ClickButton(Button button)
