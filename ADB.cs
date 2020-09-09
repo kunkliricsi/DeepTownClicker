@@ -5,7 +5,7 @@ using System.IO;
 
 namespace DeepTownClicker.Core
 {
-    internal class ADB : IScreenshotTaker
+    public class ADB : IScreenshotTaker
     {
         private static bool firstExecution = true;
 
