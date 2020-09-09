@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace DeepTownClicker.Interfaces
+namespace DeepTownClicker.Layer0.Interfaces
 {
     public interface IScreenshotTaker
     {

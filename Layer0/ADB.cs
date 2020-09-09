@@ -1,13 +1,13 @@
-﻿using DeepTownClicker.Interfaces;
+﻿using DeepTownClicker.Layer0.Interfaces;
 using System;
 using System.Diagnostics;
 using System.IO;
 
-namespace DeepTownClicker.Core
+namespace DeepTownClicker.Layer0
 {
     public class ADB : IScreenshotTaker
     {
-        private static bool firstExecution = true;
+        private bool firstExecution = true;
 
         private string RunCommand(string program, string args)
         {
@@ -20,21 +20,24 @@ namespace DeepTownClicker.Core
                 }
             }
 
-            ProcessStartInfo processInfo = new ProcessStartInfo();
-            processInfo.FileName = "adb.exe";
-            processInfo.UseShellExecute = false;
-            processInfo.CreateNoWindow = true;
-            processInfo.RedirectStandardInput = false;
-            processInfo.RedirectStandardOutput = true;
-            processInfo.RedirectStandardError = true;
-            processInfo.EnvironmentVariables.Add("VARIABLE1", "1");
-            processInfo.Arguments = args;
+            var processInfo = new ProcessStartInfo
+            {
+                FileName = program,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardInput = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                Arguments = args
+            };
 
-            Process process = new Process();
-            process.StartInfo = processInfo;
+            var process = new Process
+            {
+                StartInfo = processInfo
+            };
+
             process.Start();
-
-            StreamReader sr = process.StandardError;
+            var sr = process.StandardError;
             string output = sr.ReadToEnd();
             process.WaitForExit();
 

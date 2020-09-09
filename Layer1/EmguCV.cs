@@ -1,4 +1,4 @@
-namespace DeepTownClicker.Core
+namespace DeepTownClicker.Layer1
 {
     public class EmguCV
     {

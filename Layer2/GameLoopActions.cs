@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DeepTownClicker.Layer1;
+using System;
 using System.Linq;
-using System.Text;
 using System.Threading;
 
-namespace DeepTownClicker
+namespace DeepTownClicker.Layer2
 {
     public class GameLoopActions
     {

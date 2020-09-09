@@ -1,6 +1,8 @@
 ﻿using System;
-using DeepTownClicker.Core;
 using System.Threading;
+using DeepTownClicker.Layer0;
+using DeepTownClicker.Layer1;
+using DeepTownClicker.Layer2;
 
 namespace DeepTownClicker
 {

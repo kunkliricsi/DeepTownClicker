@@ -1,8 +1,8 @@
-using DeepTownClicker.Interfaces;
+using DeepTownClicker.Layer0.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace DeepTownClicker.Core
+namespace DeepTownClicker.Layer0
 {
     public class ScreenshotGrabber
     {
