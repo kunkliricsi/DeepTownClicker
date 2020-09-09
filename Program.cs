@@ -10,30 +10,12 @@ namespace DeepTownClicker
         {
             var adb = new ADB();
             var actions = new GameActions(adb);
+            var loops = new GameLoops(actions);
+            var cancellationSource = new CancellationTokenSource();
 
-            int i = 0;
-            while (true)
-            {
-                for (int j = 0; j < 17; j++)
-                {
-                    actions.ClickClaim();
-
-                    for (int k = 0; k < 3; k++)
-                    {
-                        if (i % 2 == 0)
-                        {
-                            actions.GoDown();
-                        }
-                        else
-                        {
-                            actions.GoUp();
-                        }
-
-                    }
-                }
-
-                Console.Write($"\rClaiming shit... {++i}");
-            }
+            loops.ClaimMinesLoop(cancellationSource.Token,
+                1, 4, 7, 10, 13, 16, 19, 22, 25,
+                28, 31, 34, 37, 40, 43, 46, 49, 52);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace DeepTownClicker
         public static Button SpellThree = new Button(620, 2230);
         public static Button SpellFour = new Button(800, 2230);
 
+        public static Button Surface = new Button(1010, 860);
         public static Button GoDown = new Button(1010, 1160);
         public static Button GoUp = new Button(1010, 960);
 

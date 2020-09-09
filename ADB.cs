@@ -51,6 +51,11 @@ namespace DeepTownClicker.Core
             RunCommand("adb.exe", "shell input touchscreen tap " + X + " " + Y);
         }
 
+        public void Swipe(int X1, int Y1, int X2, int Y2, int duration = 100)
+        {
+            RunCommand("adb.exe", "shell input touchscreen swipe " + X1 + " " + Y1 + " " + X2 + " " + Y2 + " " + duration);
+        }
+
         public FileInfo TakeScreenshot()
         {
             string error = "";

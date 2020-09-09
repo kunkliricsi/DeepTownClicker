@@ -24,6 +24,11 @@ namespace DeepTownClicker
             );
         }
 
+        public void GoToSurface()
+        {
+            ClickButton(Button.Surface);
+        }
+
         public void GoDown()
         {
             ClickButton(Button.GoDown);
@@ -34,6 +39,15 @@ namespace DeepTownClicker
             ClickButton(Button.GoUp);
         }
 
+        public void SwipeUp()
+        {
+            _adb.Swipe(500, 400, 500, 1000);
+        }
+
+        public void SwipeDown()
+        {
+            _adb.Swipe(500, 1000, 500, 400);
+        }
         public void ClickClaim()
         {
             ClickButton(Button.ClaimMine);
