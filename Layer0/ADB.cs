@@ -73,6 +73,15 @@ namespace DeepTownClicker.Layer0
             RunCommand("adb.exe", "shell input touchscreen swipe " + X1 + " " + Y1 + " " + X2 + " " + Y2 + " " + duration);
         }
 
+        public void SetScreenBrightness(bool setAuto = false, byte brightness = 0)
+        {
+            RunCommand("adb.exe", $"shell settings put system screen_brightness_mode {(setAuto ? 1 : 0)}");
+            if (!setAuto)
+            {
+                RunCommand("adb.exe", $"shell settings put system screen_brightness {brightness}");
+            }
+        }
+
         public FileInfo TakeScreenshot()
         {
             string error = "";

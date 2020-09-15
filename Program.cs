@@ -16,9 +16,13 @@ namespace DeepTownClicker
             var loops = new GameLoopActions(actions, logger);
             var cancellationSource = new CancellationTokenSource();
 
+            Console.CancelKeyPress += (_, __) => adb.SetScreenBrightness(true);
+
+            adb.SetScreenBrightness();
+
             loops.ClaimMinesAndPressSpellsLoop(cancellationSource.Token,
                 1, 4, 7, 10, 13, 16, 19, 22, 25,
-                28, 31, 34, 37, 40, 43, 46, 49, 52);
+                28, 31, 34, 37, 40, 43, 46, 49, 52, 55, 58);
         }
     }
 }
