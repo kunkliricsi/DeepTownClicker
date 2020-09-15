@@ -12,7 +12,8 @@ namespace DeepTownClicker
         {
             var adb = new ADB();
             var actions = new GameActions(adb);
-            var loops = new GameLoopActions(actions);
+            var logger = new Logger();
+            var loops = new GameLoopActions(actions, logger);
             var cancellationSource = new CancellationTokenSource();
 
             loops.ClaimMinesAndPressSpellsLoop(cancellationSource.Token,

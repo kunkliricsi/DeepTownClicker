@@ -1,4 +1,5 @@
 ﻿using DeepTownClicker.Layer1;
+using DeepTownClicker.Layer2.Interfaces;
 using System;
 using System.Linq;
 using System.Threading;
@@ -8,15 +9,17 @@ namespace DeepTownClicker.Layer2
     public class GameLoopActions
     {
         private readonly GameActions _actions;
+        private readonly ILogger _logger;
 
-        public GameLoopActions(GameActions actions)
+        public GameLoopActions(GameActions actions, ILogger logger)
         {
             _actions = actions;
+            _logger = logger;
         }
 
         public void ClickAllSpellsLoop(CancellationToken cancellation, int times = 150)
         {
-            Console.WriteLine("\nGoing to spells...");
+            _logger.WriteLine("\nGoing to spells...");
 
             _actions.GoToSurface();
             Thread.Sleep(500);
@@ -35,7 +38,7 @@ namespace DeepTownClicker.Layer2
                 cancellation.ThrowIfCancellationRequested();
 
                 _actions.ClickAllSpells();
-                Console.Write($"\r({i}) Pressing spells...");
+                _logger.Write($"\r({i}) Pressing spells...");
             }
         }
 
@@ -45,7 +48,7 @@ namespace DeepTownClicker.Layer2
 
             while (true)
             {
-                Console.Write($"\n({++i}) Claiming [{mineLevels.Length}] mines: ");
+                _logger.WriteLine($"\n({++i}) Claiming [{mineLevels.Length}] mines: ");
                 ClaimMines(cancellation, mineLevels);
             }
         }
@@ -56,7 +59,7 @@ namespace DeepTownClicker.Layer2
 
             while (true)
             {
-                Console.Write($"\n({++i}) Claiming [{mineLevels.Length}] mines: ");
+                _logger.WriteLine($"\n({++i}) Claiming [{mineLevels.Length}] mines: ");
                 ClaimMines(cancellation, mineLevels);
 
                 ClickAllSpellsLoop(cancellation);
@@ -71,8 +74,6 @@ namespace DeepTownClicker.Layer2
             var mines = mineLevels.OrderBy(i => i).ToArray();
 
             cancellation.ThrowIfCancellationRequested();
-
-            Console.WriteLine("\nGoing to surface...");
 
             _actions.GoToSurface();
             Thread.Sleep(500);
@@ -91,7 +92,7 @@ namespace DeepTownClicker.Layer2
                 {
                     cancellation.ThrowIfCancellationRequested();
                     _actions.GoDown();
-                    Console.Write('.');
+                    _logger.Write('.');
                 }
 
                 cancellation.ThrowIfCancellationRequested();
@@ -101,7 +102,7 @@ namespace DeepTownClicker.Layer2
                 Thread.Sleep(200);
                 _actions.ClickClaim();
 
-                Console.Write($"{currentLevel}");
+                _logger.Write($"{currentLevel}");
             }
         }
     }
