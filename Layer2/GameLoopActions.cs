@@ -30,7 +30,7 @@ namespace DeepTownClicker.Layer2
             Thread.Sleep(1000);
             cancellation.ThrowIfCancellationRequested();
 
-            for (int i = 0; i < times; i++)
+            for (int i = 1; i <= times; i++)
             {
                 cancellation.ThrowIfCancellationRequested();
 
@@ -71,6 +71,8 @@ namespace DeepTownClicker.Layer2
             var mines = mineLevels.OrderBy(i => i).ToArray();
 
             cancellation.ThrowIfCancellationRequested();
+
+            Console.WriteLine("\nGoing to surface...");
 
             _actions.GoToSurface();
             Thread.Sleep(500);
